@@ -1,0 +1,161 @@
+
+
+
+
+:root {
+    font-size: 10px;
+    
+    --primary-color: gray;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 2.6rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+body .container {
+    margin: 0 auto;
+    width: 750px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header {
+    width: 100%;
+    padding: 20px 0 30px 0;
+/*
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:;
+*/
+}
+
+/*
+header img {
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+}
+*/
+
+header h1 {
+    text-align: center;
+    font-size: 4rem;
+}
+
+main {
+    width: 100%;
+}
+
+#overall {
+    background-color: var(--primary-color);
+    width: 100%;
+    padding: 20px 0 30px 0;
+    border-radius: 8px;
+}
+
+#overall * {
+    color: white;
+}
+
+#overall h2 {
+/*    font-size: 2.8rem;*/
+    text-align: center;
+}
+
+#overall #facts {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#overall #facts * {
+    font-size: 1.8rem;
+    margin-top: 10px;
+}
+
+#overall #facts .right p {
+    text-align: center;
+}
+
+#list .heading {
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 30px 0;
+}
+
+#list .heading button {
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+    border: none;
+}
+
+#list li {
+    width: 100%;
+    border: 3px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#list li .book {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+#list li img {
+    width: 30px;
+}
+
+#list li h3 {
+    font-size: 1.8rem;
+}
+
+#list li pre {
+    margin-top: 5px;
+    font-size: 1.2rem;
+}
+
+#list li button {
+    width: 100px;
+    padding: 6px 0;
+    margin-left: 5px;
+}
+
+#list li button.read {
+    background-color: green;
+    border: 2px solid green;
+}
+
+#list li button.read.not-read {
+    background-color: white;
+    color: green;
+    border: 2px solid green;
+}
+
+#list li button.remove {
+    background-color: red;
+    border: 2px solid red;
+}
