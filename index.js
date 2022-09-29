@@ -8,6 +8,8 @@ function Book(title, author, pages, read, id) {
 
 let bookStorage = [];
 let currentId = 4;
+let editingBook = false;
+let editingBookIndex = -1;
 
 const totalBooks = document.querySelector("#overall #facts #total-book");
 const totalRead = document.querySelector("#overall #facts #total-read");
@@ -24,6 +26,27 @@ const newBookRead = document.querySelector("#new-book #read");
 const newBookAddButton = document.querySelector("#new-book .buttons #add");
 const newBookCancelButton = document.querySelector("#new-book .buttons #cancel");
 
+const readCheck = document.querySelector("#new-book .read-check");
+
+function reset() {
+    
+    newBookScreen.style.display = "none";
+    newBookScreen.style.visibility = "hidden";
+
+    newBookTitle.value = "";
+    newBookAuthor.value = "";
+    newBookPages.value = "";
+    newBookRead.checked = false;
+    
+    readCheck.style.display = "unset";
+    readCheck.style.visibility = "unset";
+    
+    newBookAddButton.textContent = "Add New Book";
+    
+    let editingBook = false;
+    let editingBookIndex = -1;
+}
+
 addBookButton.addEventListener("click", () => {
     newBookScreen.style.display = "unset";
     newBookScreen.style.visibility = "unset";
@@ -35,31 +58,52 @@ newBookCancelButton.addEventListener("click", (event) => {
 
     newBookScreen.style.display = "none";
     newBookScreen.style.visibility = "hidden";
+    
+    reset();
 });
 
 
 newBookAddButton.addEventListener("click", (event) => {
 
     event.preventDefault();
+    
+    if (newBookTitle.validity.valueMissing) {
+        newBookTitle.setCustomValidity("Book should have a title");
+        newBookTitle.reportValidity();
+    }
+    
+    else if (newBookAuthor.validity.valueMissing) {
+        newBookAuthor.setCustomValidity("Book should have an author");
+        newBookAuthor.reportValidity();
+    } 
+    
+    else if (newBookPages.validity.valueMissing) {
+        newBookPages.setCustomValidity("Book should have pages");
+        newBookPages.reportValidity();
+    }
+    
+    else {
+        
+        if (!editingBook) {
+            const title = newBookTitle.value;
+            const author = newBookAuthor.value;
+            const pages = newBookPages.value;
+            const read = newBookRead.checked;
+            const id = currentId;
+            currentId++;
 
-    const title = newBookTitle.value;
-    const author = newBookAuthor.value;
-    const pages = newBookPages.value;
-    const read = newBookRead.checked;
-    const id = currentId;
-    currentId++;
+            const newBook = new Book(title, author, pages, read, id);
 
-    const newBook = new Book(title, author, pages, read, id);
-
-    newBookScreen.style.display = "none";
-    newBookScreen.style.visibility = "hidden";
-
-    newBookTitle.value = "";
-    newBookAuthor.value = "";
-    newBookPages.value = "";
-    newBookRead.checked = false;
-
-    addNewBook(newBook);
+            addNewBook(newBook);
+        } else {
+            bookStorage[editingBookIndex].title = newBookTitle.value;
+            bookStorage[editingBookIndex].author = newBookAuthor.value;
+            
+            totalPages.textContent = Number(totalPages.textContent) - Number(bookStorage[editingBookIndex].pages) + Number(newBookPages.value);
+            bookStorage[editingBookIndex].pages = newBookPages.value;
+        }
+        reset();
+    }
 });
 
 function addNewBook(book) {
@@ -112,6 +156,7 @@ function addNewBook(book) {
     const editButton = document.createElement("button");
     editButton.classList.add("edit");
     editButton.textContent = "EDIT";
+    editButton.addEventListener("click", editButtonFunctionality);
 
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove");
@@ -154,6 +199,34 @@ function readButtonFunctionality(event) {
         totalRead.textContent = Number(totalRead.textContent) - 1;
     }
 }
+
+function editButtonFunctionality(event) {
+    
+    id = event.target.previousSibling.previousSibling.textContent;
+    let index;
+
+    bookStorage.find((book, i) => {
+        if (book.id == id) {
+            index = i;
+            return;
+        }
+    });
+    
+    editingBook = true;
+    editingBookIndex = index;
+    
+    newBookTitle.value = bookStorage[index].title;
+    newBookAuthor.value = bookStorage[index].author;
+    newBookPages.value = bookStorage[index].pages;
+    
+    readCheck.style.display = "none";
+    readCheck.style.visibility = "hidden";
+    
+    newBookAddButton.textContent = "Done Editing";
+    
+    newBookScreen.style.display = "unset";
+    newBookScreen.style.visibility = "unset";
+}   
 
 function removeButtonFunctionality(event) {
 
