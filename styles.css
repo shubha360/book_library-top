@@ -1,11 +1,8 @@
-
-
-
-
 :root {
     font-size: 10px;
     
-    --primary-color: gray;
+    --primary-color: #72af00;
+    --background-color: #f8ffe9;
 }
 
 * {
@@ -29,6 +26,10 @@ button {
     cursor: pointer;
 }
 
+body {
+    background-color: var(--background-color);
+}
+
 body .container {
     margin: 0 auto;
     width: 750px;
@@ -39,21 +40,8 @@ body .container {
 header {
     width: 100%;
     padding: 20px 0 30px 0;
-/*
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content:;
-*/
-}
 
-/*
-header img {
-    display: block;
-    margin: 0 auto;
-    width: 60px;
 }
-*/
 
 header h1 {
     text-align: center;
@@ -76,7 +64,6 @@ main {
 }
 
 #overall h2 {
-/*    font-size: 2.8rem;*/
     text-align: center;
 }
 
@@ -89,6 +76,7 @@ main {
 #overall #facts * {
     font-size: 1.8rem;
     margin-top: 10px;
+    font-weight: 600;
 }
 
 #overall #facts .right p {
@@ -111,18 +99,19 @@ main {
 
 #list li {
     width: 100%;
-    border: 3px solid var(--primary-color);
+    border: 5px solid var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 #list li .book {
     display: flex;
     align-items: center;
-    column-gap: 10px;
+    column-gap: 20px;
 }
 
 #list li img {
@@ -131,11 +120,17 @@ main {
 
 #list li h3 {
     font-size: 1.8rem;
+    font-style: italic;
 }
 
 #list li pre {
     margin-top: 5px;
     font-size: 1.2rem;
+}
+
+#list li .buttons .id {
+    display: none;
+    visibility: hidden;
 }
 
 #list li button {
@@ -144,18 +139,160 @@ main {
     margin-left: 5px;
 }
 
+#list li button {
+    border: 2px solid;
+}
+
 #list li button.read {
-    background-color: green;
-    border: 2px solid green;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 #list li button.read.not-read {
-    background-color: white;
-    color: green;
-    border: 2px solid green;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+#list li button.edit {
+    background-color: skyblue;
+    border-color: skyblue;
 }
 
 #list li button.remove {
-    background-color: red;
-    border: 2px solid red;
+    background-color: orangered;
+    border-color: orangered;
+}
+
+#new-book {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    display: none;
+    visibility: hidden;
+}
+
+#new-book form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    padding: 30px 20px;
+    background-color: white;
+    border: 5px solid var(--primary-color);
+    border-radius: 8px;
+}
+
+#new-book form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#new-book form .input-block {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    column-gap: 50px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#new-book form .input-block div {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+#new-book form label {
+    font-size: 1.8rem;
+}
+
+#new-book form input {
+    padding: 5px;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--background-color);
+    border: 3px solid var(--primary-color);
+}
+
+#new-book form input:focus,
+#new-book form input:active {
+    outline: none;
+}
+
+#new-book form input[type="text"] {
+    width: 100%;
+}
+
+#new-book form #read {
+    transform: scale(1.6);
+}
+
+#new-book form .buttons {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+#new-book form button {
+    padding: 10px 20px;
+}
+
+#new-book form .buttons #add {
+    background-color: var(--primary-color);
+}
+
+#new-book form .buttons #cancel {
+    background-color: orange;
+}
+
+@media (max-width: 800px) {
+    body .container {
+        width: 90%;
+    }
+
+    #list li {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 20px;
+    }
+
+    #list li .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #list li .buttons button {
+        margin: 10px 10px 0 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    #new-book form {
+        width: 90%;
+    }
+
+    #new-book form #page-read * {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    #list .heading {
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+
+    #list .heading h2 {
+        text-align: center;
+        width: 100%;
+    }
 }

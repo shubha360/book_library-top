@@ -15,7 +15,6 @@
     <body>
         <div class="container">
             <header>
-<!--                <img src="images/placeholder.svg" alt="">-->
                 <h1>Book Library</h1>
             </header>
             <main>
@@ -28,9 +27,9 @@
                             <p>Total pages</p>
                         </div>
                         <div class="right">
-                            <p id="total-book">10</p>
-                            <p id="total-read">7</p>
-                            <p id="total-page">3412</p>
+                            <p id="total-book">0</p>
+                            <p id="total-read">0</p>
+                            <p id="total-page">0</p>
                         </div>
                     </div>
                 </section>
@@ -40,22 +39,58 @@
                         <button>Add New Book</button>
                     </div>
                     <ul>
-                        <li>
+                        
+
+                        <!-- <li>
                             <div class="book">
-                                <img src="images/placeholder.svg">
+                                <img src="images/book.png" role="presentation">
                                 <div class="text">
-                                    <h3 class="name">Deyal</h3>
-                                    <pre class="author-pages">Humayun Ahmed   |   474 pages</pre>
+                                    <h3>Deyal</h3>
+                                    <pre>Humayun Ahmed   |   474 pages</pre>
                                 </div>
                             </div>
                             <div class="buttons">
+                                <p class="id"><p>
                                 <button class="read not-read">NOT READ</button>
+                                <button class="edit">EDIT</button>
                                 <button class="remove">REMOVE</button>
-                            </div>
-                        </li>
+                            </div> 
+                        </li> -->
+
+
                     </ul>
                 </section>
             </main>
+        </div>
+        <div id="new-book">
+            <form>
+                <h2>Book Details</h2>
+                <div class="input-block">
+                    <label for="title">Book Title</label>
+                    <input id="title" type="text" required>
+                </div>
+                
+                <div class="input-block">
+                    <label for="author">Author</label>
+                    <input id="author" type="text" required>
+                </div>
+                
+                <div class="input-block" id="page-read">
+                    <div>
+                        <label for="pages">Pages</label>
+                        <input id="pages" type="number" required>
+                    </div>
+                    <div>
+                        <input id="read" type="checkbox" name="read">
+                        <label for="read">Read</label>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button id="add">Add To My Books</button>
+                    <button id="cancel">Cancel</button>
+                </div>
+            </form>
         </div>
     </body>
 </html>
