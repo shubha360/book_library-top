@@ -1,8 +1,9 @@
 :root {
     font-size: 10px;
     
-    --primary-color: #55af00;
-    --background-color: #edffe9;
+    --primary-color: #0e3b3b;
+    --background-color: #f0f8ff;
+    /* color: ; */
 }
 
 * {
@@ -100,7 +101,7 @@ main {
 
 #list li {
     width: 100%;
-    border: 5px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -161,8 +162,8 @@ main {
 }
 
 #list li button.remove {
-    background-color: orangered;
-    border-color: orangered;
+    background-color: #eb0000;
+    border-color: #eb0000;
 }
 
 #new-book {
