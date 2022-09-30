@@ -29,8 +29,6 @@ const newBookRead = document.querySelector("#new-book #read");
 const newBookAddButton = document.querySelector("#new-book .buttons #add");
 const newBookCancelButton = document.querySelector("#new-book .buttons #cancel");
 
-const readCheck = document.querySelector("#new-book .read-check");
-
 function reset() {
     
     newBookScreen.style.display = "none";
@@ -41,9 +39,12 @@ function reset() {
     newBookPages.value = "";
     newBookRead.checked = false;
     
-    readCheck.style.display = "unset";
-    readCheck.style.visibility = "unset";
+    newBookRead.style.display = "unset";
+    newBookRead.style.visibility = "unset";
     
+    newBookRead.nextElementSibling.style.display = "unset";
+    newBookRead.nextElementSibling.style.visibility = "unset";
+
     newBookAddButton.textContent = "Add New Book";
     
     editingBook = false;
@@ -227,9 +228,12 @@ function editButtonFunctionality(event) {
     newBookAuthor.value = bookStorage[index].author;
     newBookPages.value = bookStorage[index].pages;
     
-    readCheck.style.display = "none";
-    readCheck.style.visibility = "hidden";
+    newBookRead.style.display = "none";
+    newBookRead.style.visibility = "hidden";
     
+    newBookRead.nextElementSibling.style.display = "none";
+    newBookRead.nextElementSibling.style.visibility = "hidden";
+
     newBookAddButton.textContent = "Done Editing";
     
     newBookScreen.style.display = "unset";
