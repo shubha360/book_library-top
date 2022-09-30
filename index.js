@@ -1,15 +1,18 @@
-function Book(title, author, pages, read, id) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = id;
+class Book {
+    constructor (title, author, pages, read, id) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = id;    
+    }
 }
 
 let bookStorage = [];
 let currentId = 4;
 let editingBook = false;
 let editingBookIndex = -1;
+let editingBookListItem = null;
 
 const totalBooks = document.querySelector("#overall #facts #total-book");
 const totalRead = document.querySelector("#overall #facts #total-read");
@@ -43,8 +46,9 @@ function reset() {
     
     newBookAddButton.textContent = "Add New Book";
     
-    let editingBook = false;
-    let editingBookIndex = -1;
+    editingBook = false;
+    editingBookIndex = -1;
+    editingBookListItem = null;
 }
 
 addBookButton.addEventListener("click", () => {
@@ -101,6 +105,9 @@ newBookAddButton.addEventListener("click", (event) => {
             
             totalPages.textContent = Number(totalPages.textContent) - Number(bookStorage[editingBookIndex].pages) + Number(newBookPages.value);
             bookStorage[editingBookIndex].pages = newBookPages.value;
+
+            editingBookListItem.childNodes[0].childNodes[1].childNodes[0].textContent = newBookTitle.value;
+            editingBookListItem.childNodes[0].childNodes[1].childNodes[1].textContent = `${newBookAuthor.value}  |  ${newBookPages.value} pages`;
         }
         reset();
     }
@@ -214,7 +221,8 @@ function editButtonFunctionality(event) {
     
     editingBook = true;
     editingBookIndex = index;
-    
+    editingBookListItem = event.target.parentNode.parentNode;
+
     newBookTitle.value = bookStorage[index].title;
     newBookAuthor.value = bookStorage[index].author;
     newBookPages.value = bookStorage[index].pages;

@@ -1,8 +1,8 @@
 :root {
     font-size: 10px;
     
-    --primary-color: #72af00;
-    --background-color: #f8ffe9;
+    --primary-color: #55af00;
+    --background-color: #edffe9;
 }
 
 * {
@@ -57,6 +57,7 @@ main {
     width: 100%;
     padding: 20px 0 30px 0;
     border-radius: 8px;
+    box-shadow: 0px 5px 5px 0px rgb(0, 0, 0, 0.2);
 }
 
 #overall * {
